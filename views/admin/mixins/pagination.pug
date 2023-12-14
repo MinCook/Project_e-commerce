@@ -1,0 +1,12 @@
+mixin pagination(currentPage,page)
+    ul( class ="pagination")
+
+        li( page-number = `${currentPage == 1 ? 1 : currentPage -1}` ) 
+            button Trang trước
+
+        - for ( var  i=1;i <= page;i++)
+            li(page-number=`${i}`) 
+                button #{i}
+
+        li(page-number = `${currentPage == page ? page: currentPage +1}`  ) 
+            button Trang kế tiếp

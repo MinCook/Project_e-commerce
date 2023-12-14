@@ -1,0 +1,20 @@
+form(action="/admin/product/create"  method="post" enctype="multipart/form-data" )
+    h1 Thêm mới sản phẩm 
+    h2 Tiêu đề
+        input(type="text", name="title" required )
+    h2 Mô tả
+        textarea(name="description", cols="30", rows="10" required) 
+    h2 Giá
+        input(type="text", name="price" required)
+    h2 Giảm giá
+        input(type="text", name="discountPercentage" required)
+    h2 Số lượng
+        input(type="text", name="stock" required)      
+    h2 Ảnh
+        input(type="file" name="thumbnail" accept="image/*"  class="inputPreview")
+        img(src="", alt="preview" class="img")
+        button(class="closeInput") X
+    h2 Vị trí
+        input(type="text", name="position")      
+    button(type="submit") Tạo mới
+script(src="/js/script.js") 

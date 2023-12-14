@@ -1,0 +1,56 @@
+include ../../mixins/pagination.pug
+doctype html
+html 
+    head
+        title #{titlePage}
+    body
+    link(rel="stylesheet", href="/css/style.css")
+    button(button-status= "") Tất cả
+    button(button-status= "active") Đang hoạt động
+    button(button-status= "inactive") Dừng hoạt động
+    console.log(#{keysearch})
+    form( class="form") 
+        input(type="text" name="keysearch" placeholder="Nhập tìm kiếm" value = keysearch)
+    a(href=`/admin/product/create`
+    class="createBtn") Thêm mới 
+    ul 
+        form(action="/admin/product/changeMulti/?_method=patch", method="post",id="changeMulti")
+            input( 
+            changeMulti
+            name="ids"
+            value=""
+            class="hidden"
+            )
+            select(name="type")
+                option(value="active") Hoạt động        
+                option(value="inactive") Dừng hoạt động
+                option(value="changePosition") Thay đổi vị trí
+                option(value="deleteAll")  Xóa tất cả
+            button(class="btn" type="submit") Áp dụng  
+        input(type="checkbox", checkAll) 
+        | Tất cả
+        each item in products 
+            div(class="box--item") 
+                input(type="checkbox" , id=item.id, checkOne)
+                img(src=item.thumbnail)
+                h4 #{item.title} 
+                button(delete-item id=item.id)  X
+                a(href=`/admin/product/edit/${item.id}` btn-edit) Sửa chữa 
+                input(type="number", value = item.position min="1", style=" width: 60px", position)
+                if(item.status == "active")
+                    button(
+                        href="javascript:;"
+                        status="active"
+                        id=item.id
+                    ) Hoạt động
+                else
+                    button(
+                            href="javascript:;"
+                            status="inactive"
+                            id=item.id
+                        ) Dừng hoạt  động
+    form(action="", method="post",path="/admin/product/changeStatus",id="changeStatus") 
+    form(action="", method="post",path="/admin/product/delete",id="deleteItem") 
+    +pagination(currentPage,page)
+    script(src="/js/script.js") 
+    

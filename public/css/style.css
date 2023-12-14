@@ -1,0 +1,31 @@
+.pagination{
+    display: flex;
+   list-style: none;
+}
+.pagination li{
+    margin-right: 10px;
+}
+
+.active{
+    background-color: blue;
+}
+.box--item{
+    border: 1px solid black;
+    width: 20%;
+    margin-bottom: 20px;
+}
+.createBtn{
+    padding: 10px;
+    background-color: aqua;
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+.hidden{
+    display: none;
+}
+img{
+    width: 40px;
+    height: 40px;
+}
